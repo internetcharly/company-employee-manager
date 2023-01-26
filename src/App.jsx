@@ -14,7 +14,7 @@ function App() {
 	)
 
 	const [employees, setEmployees] = useState(
-		JSON.parse(localStorage.getItem('selectedTeam')) || [
+		JSON.parse(localStorage.getItem('employeeList')) || [
 			{
 				id: 1,
 				fullName: 'Bob Jones',
@@ -110,11 +110,11 @@ function App() {
 		localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam))
 	}, [selectedTeam])
 
-	function handleTeamSelectionChange(event) {
+	const handleTeamSelectionChange = (event) => {
 		setSelectedTeam(event.target.value)
 	}
 
-	function handleEmployeeCardClick(event) {
+	const handleEmployeeCardClick = (event) => {
 		const transformedEmployees = employees.map((employee) =>
 			employee.id === parseInt(event.currentTarget.id)
 				? employee.teamName === selectedTeam
@@ -154,7 +154,7 @@ function App() {
 							<GroupedTeamMembers
 								employees={employees}
 								selectedTeam={selectedTeam}
-								setTeam={setSelectedTeam}
+								setSelectedTeam={setSelectedTeam}
 							/>
 						}
 					/>
