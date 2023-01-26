@@ -30,6 +30,7 @@ export const Employees = ({
 					<div className='card-collection'>
 						{employees.map((employee) => (
 							<div
+								key={employee.id}
 								id={employee.id}
 								className={
 									employee.teamName === selectedTeam
